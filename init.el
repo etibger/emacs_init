@@ -18,8 +18,8 @@
 
 (defvar init-myPackages
   '(better-defaults
-    flycheck
-    origami
+;;    flycheck
+;;    origami
     material-theme))
 
 (mapc #'(lambda (package)
@@ -43,6 +43,9 @@
 
 ;; enable line numbers globally
 (global-linum-mode t)
+
+;; show culomn number by default
+(setq column-number-mode t)
 
 ;; enable delet selection mode
 (delete-selection-mode t)
