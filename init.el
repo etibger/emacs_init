@@ -30,7 +30,7 @@
     solarized-theme
     org
     org-bullets
-    pos-tip
+    ;pos-tip
     pp-c-l
     hide-comnt))
 
