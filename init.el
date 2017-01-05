@@ -32,7 +32,8 @@
     org-bullets
     ;pos-tip
     pp-c-l
-    hide-comnt))
+    hide-comnt
+    ace-window))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -149,6 +150,8 @@
 ;; key bindings for hide/show-comment
 (define-key origami-mode-map (kbd "C-M-; h h") 'hide/show-comments)
 (define-key origami-mode-map (kbd "C-M-; h t") 'hide/show-comments-toggle)
+
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom KBD macros  ;;
