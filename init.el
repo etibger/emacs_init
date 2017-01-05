@@ -18,16 +18,18 @@
 
 (defvar init-myPackages
   '(better-defaults
-;;    flycheck
-;;    origami
-;;    magit
-;;    elpy
-;;    counsel
-;;    hydra
-;;    ivy-hydra
-;;    ivy-rich
-;;    auto-complet
-    material-theme))
+    flycheck
+    origami
+    magit
+    elpy
+    counsel
+    hydra
+    ivy-hydra
+    ivy-rich
+    auto-complet
+    solarized-them
+    org
+    org-bullets))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -41,6 +43,7 @@
 
 (when (require 'elpy nil t)
   (elpy-enable))
+(setq elpy-rpc-backend "jedi")
 
 (ac-config-default)
 
@@ -58,9 +61,6 @@
 
 ;; enable origami mode by default
 (global-origami-mode t)
-
-;; load material theme
-(load-theme 'material t)
 
 ;; enable line numbers globally
 (global-linum-mode t)
@@ -80,10 +80,7 @@
 ;; enable magits for files
 (global-magit-file-mode)
 
-;; enable ido mode by default
-;;(ido-mode t)
-
-;;
+;; global ivy-mode
 (ivy-mode t)
 
 (setq ivy-use-virtual-buffers t)
@@ -109,6 +106,14 @@
 
 (setq ivy-virtual-abbreviate 'full
       ivy-rich-switch-buffer-align-virtual-buffer t)
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
