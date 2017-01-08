@@ -22,15 +22,14 @@
     origami
     magit
     elpy
+    company-quickhelp
     counsel
     hydra
     ivy-hydra
     ivy-rich
-    auto-complete
     solarized-theme
     org
     org-bullets
-    ;pos-tip
     pp-c-l
     hide-comnt
     ace-window))
@@ -49,12 +48,10 @@
   (elpy-enable))
 (setq elpy-rpc-backend "jedi")
 
-(ac-config-default)
-
-(defadvice auto-complete-mode (around disable-auto-complete-for-python)
-  (unless (eq major-mode 'python-mode) ad-do-it))
-
-(ad-activate 'auto-complete-mode)
+;; use company mode by default
+(add-hook 'after-init-hook 'global-company-mode)
+;; show docstring by default
+(company-quickhelp-mode 1)
 
 ;; enable flychek mode globally
 (global-flycheck-mode)
@@ -102,6 +99,7 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+(define-key magit-mode-map (kbd "M-P") 'ace-window)
 
 ;; global ivy-mode
 (ivy-mode t)
@@ -205,14 +203,17 @@
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
  '(hl-sexp-background-color "#1c1f26")
- '(package-selected-packages (quote (flycheck solarized-theme better-defaults))))
+ '(package-selected-packages
+   (quote
+    (company-quickhelp org flycheck solarized-theme better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
 
 (provide 'init)
 ;;; init.el ends here
+
 
