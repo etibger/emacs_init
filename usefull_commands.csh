@@ -13,3 +13,11 @@ bjobs -noheader | sed 's/\([0-9]*\) .*/\1/' | xargs bkill
 # 4) get the name only
 # 5) process the file (delet it)
 ll | grep -v " Dec " | grep xsession | sed 's/.*\(\.xse.*\)/\1/' | xargs rm -v
+
+# sed in all of the non binary file
+# 1) find file types in cwd
+# 2) grep for first match of every character, -I bynary-files=without-match
+# 3) do the actual replacement
+#   a) do it inplace
+#   b) do it globally (multiple times per line if necessary 
+find . -type f -exec grep -Iq . {} ";" -exec sed -i 's/ahb5_to_apb_sync/ahb5_to_apb_ll_sync/g' {} \;
