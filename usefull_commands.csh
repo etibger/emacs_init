@@ -21,3 +21,7 @@ ll | grep -v " Dec " | grep xsession | sed 's/.*\(\.xse.*\)/\1/' | xargs rm -v
 #   a) do it inplace
 #   b) do it globally (multiple times per line if necessary 
 find . -type f -exec grep -Iq . {} ";" -exec sed -i 's/ahb5_to_apb_sync/ahb5_to_apb_ll_sync/g' {} \;
+
+
+# find files newer than foo, not ending wiht pyc
+ll `find ./ -maxdepth 1 -type f -not -name "*.pyc" -newer /tmp/foo`
