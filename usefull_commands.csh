@@ -25,3 +25,6 @@ find . -type f -exec grep -Iq . {} ";" -exec sed -i 's/ahb5_to_apb_sync/ahb5_to_
 
 # find files newer than foo, not ending wiht pyc
 ll `find ./ -maxdepth 1 -type f -not -name "*.pyc" -newer /tmp/foo`
+
+# parse csv with awk csv is separated with "," and print first and sixth column
+awk -F , '{print $1 "|" $6}' hxb/uvm/all_merged_ccov.csv 
