@@ -28,3 +28,6 @@ ll `find ./ -maxdepth 1 -type f -not -name "*.pyc" -newer /tmp/foo`
 
 # parse csv with awk csv is separated with "," and print first and sixth column
 awk -F , '{print $1 "|" $6}' hxb/uvm/all_merged_ccov.csv 
+
+#meret
+du -k --max-depth=1 --exclude .snapshot | sort -n
